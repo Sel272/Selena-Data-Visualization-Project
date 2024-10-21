@@ -1,0 +1,75 @@
+---
+title: "Data Visualization Project: Washington Nationals Analysis"
+subtitle: "Group Member: Xuening Yang, Zhuoyan Guo, Congfei Yin, Marcus Li"
+format:
+  html:
+    embed-resources: true
+    code-fold: true
+execute:
+    echo: true
+    warning: false
+    message: false
+    freeze: auto
+---
+
+## Introduction
+
+The Washington Nationals is a professional baseball team that competes in Major League Baseball (MLB). Located in Washington, D.C., the team plays its home games at Nationals Park. Back in 2019, the Washington Nationals made a surprising run in the playoffs, culminating in a victory at the World Series and securing their first MLB championship in franchise history. Let's relive that exciting experience in the following video.
+
+{{< video https://www.youtube.com/watch?v=QXQrebvFCKg >}}
+
+After years affected by COVID and several rebuilding seasons, the Washington Nationals have become a mediocre team within five years. They are consistently ranked as one of the bottom teams in their conference. What has changed during this period? The goal of this project is to use interactive visualization tools along with informative narratives to help the audience understand some team-level changes using a data-driven approach.
+
+Our team has investigated various operational, offensive, and defensive statistics for the Washington Nationals and conducted extensive side-by-side comparisons to explore the differences or changes between 2019 and 2023. The final results are described in the 'Project Summary' tab, where the audience can view a detailed proposal for this project. The objective of this project is to use data visualization tools to tell a compelling story to the audience, relating to team management improvement strategies that could potentially elevate the Washington Nationals back to championship contention.
+
+## Research Questions
+
+### Team-Level Performance 
+
+⚾ How did the changes in team composition between 2019 and 2023 affect the Washington Nationals' performance in key statistical areas  such as ERA, batting average, and fielding percentage?
+
+⚾ What were the significant differences in team strategy and outcomes in the 2019 and 2023 seasons, and how did these impact overall success?
+
+⚾ How did the performance metrics during the regular season of 2019 compare to those in 2023, and what factors contributed to any observed variances?
+
+### Individual Player Analysis
+
+⚾ Which players showed the most significant improvement or decline in performance between the 2019 and 2023 seasons in terms of OPS, batting average, and home runs?
+
+⚾ How did the performance of key players in 2019 influence the outcomes of crucial games compared to those in 2023?
+
+⚾ Identify the players whose performance metrics significantly diverged from their career averages during these years. What might explain these variances?
+
+⚾ How did aging affect the performance of players who were active in both the 2019 and 2023 seasons?
+
+### Other Aspects:
+#### Injury Analysis
+
+⚾ What were the most common injuries for the Nationals' roster in 2019 versus 2023, and how did these injuries impact team performance metrics?
+
+⚾ Analysis of recovery times: Were players able to return to their pre-injury performance levels after injuries in 2019 and 2023?
+
+⚾ Did injury rates in 2019 and 2023 correlate with specific game or practice conditions, such as increased game density or changes in training regimen?
+
+⚾ How did the absence of key players due to injuries in these specific seasons affect the strategic decisions and game outcomes for the Nationals?
+
+#### Payroll and Attendance Analysis
+
+⚾ How did the Washington Nationals' payroll changes between 2019 and 2023 correlate with the team's performance?
+
+⚾ How did fluctuations in fan attendance correlate with the team's performance metrics in the 2019 and 2023 seasons?
+
+::: {.callout-note appearance="simple"}
+
+## Data, Code and Image Source
+1. All the data is saved in the data folder on the GitHub repository, with a link pointing to it through the 'Data' tab. Data is primarily collected from 'https://www.baseball-reference.com' and 'https://baseballsavant.mlb.com/'. Additional data has also been collected to support further analysis. All data sources used are cited in the figure captions in the 'Project Summary' tab.
+
+2. Most of the code is constructed in R using the Plotly library for interactive functionality. The last injury chart is coded in Python. Details of the code can be referred to in the GitHub repository using the 'Code' tab on the left.
+
+3. Github Page: <https://github.com/Sel272/Selena-Data-Visualization-Project>.
+
+4. The Washington Nationals logo image is obtained from 'https://mrwallpaper.com/wallpapers/washington-nationals-team-screen-9i46cks6esmwu8ig.html'. The bottom image is obtained from 'https://wallpapers.com/wallpapers/washington-nationals-wood-grain-gqs0nshw7dsn8j8z.html'.
+
+::: 
+
+![Washington Nationals](../img/Nats_Banner.jpeg)

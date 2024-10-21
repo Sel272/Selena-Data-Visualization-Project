@@ -1,0 +1,123 @@
+---
+title: "5200 Final Project Line Chart"
+format:
+  html:
+    embed-resources: true
+execute:
+    echo: true
+    warning: false
+    message: false
+    freeze: auto
+---
+
+```{r}
+library(tidyverse)
+# Load the data
+stadium <- read_csv("Nationals_Stadium_Stats.csv")
+# https://www.baseball-reference.com/teams/WSN/attend.shtml
+```
+```{r}
+# Drop year 2020 due to the Covid impact
+stadium <- stadium %>% filter (Year!=2020 & Year!=2024)
+
+# Convert 'Est. Payroll' to numeric after removing commas and dollar signs
+stadium$`Est. Payroll` <- as.numeric(gsub("[,$]", "", stadium$`Est. Payroll`))
+```
+
+```{r}
+library(readxl)
+# read the revenue related file
+# Get the names of all sheets in the Excel file
+sheets1 <- excel_sheets("statistic_id203506_washington-nationals-average-ticket-price-2006-2023.xlsx")
+
+# Read the second tab (assuming its name is stored in the variable 'sheet_name')
+ticket <- read_excel("statistic_id203506_washington-nationals-average-ticket-price-2006-2023.xlsx", sheet = sheets1[2])
+
+# Drop the unused rows
+ticket <- ticket %>% na.omit()
+
+# Replace column names
+names(ticket) <- c('Year','Ticket Price')
+
+# Remove year 2020 due to Covid impact and the additional years outside 2008 to 2023 to match the time scale
+ticket <- ticket %>% filter (Year!=2020 & Year >= 2008 ) %>% mutate(Year = as.numeric(Year))
+
+# Join the ticket price column to the stadium dataset
+stadium_combined <- stadium %>% left_join(ticket,by='Year')
+```
+
+```{r}
+library(readxl)
+# read the revenue related file
+# Get the names of all sheets in the Excel file
+sheets2 <- excel_sheets("statistic_id196692_washington-nationals-revenue-2001-2022.xlsx")
+
+# Read the second tab (assuming its name is stored in the variable 'sheet_name')
+revenue <- read_excel("statistic_id196692_washington-nationals-revenue-2001-2022.xlsx", sheet = sheets2[2])
+
+# Drop the unused rows
+revenue <- revenue %>% na.omit()
+
+# Replace column names
+names(revenue) <- c('Year','Revenue')
+
+# Remove year 2020 due to Covid impact and the additional years outside 2008 to 2023 to match the time scale
+revenue <- revenue %>% filter (Year!=2020 & Year >= 2008 ) %>% mutate(Year = as.numeric(Year))
+
+# Join the revenue column to the stadium dataset
+stadium_final <- stadium_combined %>% left_join(revenue,by='Year')
+
+```
+
+
+
+```{r}
+library(plotly)
+library(dplyr)
+
+# Create a base plot with hover text
+p <- plot_ly(stadium_final, x = ~Year, y = ~Attendance, type = 'scatter', mode = 'lines+markers', name = 'Attendance',
+             text = ~paste("Year:", Year, "<br>Attendance:", format(Attendance, big.mark = ",", scientific = FALSE)), hoverinfo = 'text')
+
+# Add other traces with their respective hover text
+p <- p %>% add_trace(y = ~`Est. Payroll`, name = "Estimated Payroll", visible = F,
+                     text = ~paste("Year:", Year, "<br>Payroll:", format(`Est. Payroll`, big.mark = ",", scientific = FALSE)), hoverinfo = 'text')
+p <- p %>% add_trace(y = ~`Ticket Price`, name = "Average Ticket Price", visible = F,
+                     text = ~paste("Year:", Year, "<br>Price:", `Ticket Price`, "$"), hoverinfo = 'text')
+p <- p %>% add_trace(y = ~Revenue, name = "Revenue", visible = F,
+                     text = ~paste("Year:", Year, "<br>Revenune in Millions:", Revenue), hoverinfo = 'text')
+p <- p %>% add_trace(y = ~PPF, name = "Pitcher's Park Factor", visible = F,
+                     text = ~paste("Year:", Year, "<br>Factor Value:", PPF), hoverinfo = 'text')
+p <- p %>% add_trace(y = ~BPF, name = "Batter's Park Factor", visible = F,
+                     text = ~paste("Year:", Year, "<br>Factor Value:", BPF), hoverinfo = 'text')
+
+# Define layout and buttons for interactivity
+final_plot <- p %>% layout(
+  title = 'Interactive Visualization of Washington Nationals Statistics',
+  xaxis = list(title = 'Year'),
+  yaxis = list(title = 'Value'),
+  updatemenus = list(
+    list(
+      type = 'buttons',
+      direction = 'left',
+      x = 0,
+      xanchor = 'left',
+      y = -0.2,
+      yanchor = 'top',
+      buttons = list(
+        list(method = 'update', args = list(list(visible = c(TRUE, FALSE, FALSE, FALSE, FALSE, FALSE)), list(title = 'Attendance')), label = 'Attendance'),
+        list(method = 'update', args = list(list(visible = c(FALSE, TRUE, FALSE, FALSE, FALSE, FALSE)), list(title = 'Estimated Payroll')), label = 'Payroll'),
+        list(method = 'update', args = list(list(visible = c(FALSE, FALSE, TRUE, FALSE, FALSE, FALSE)), list(title = 'Average Ticket Price')), label = 'Ticket Price'),
+        list(method = 'update', args = list(list(visible = c(FALSE, FALSE, FALSE, TRUE, FALSE, FALSE)), list(title = 'Revenue')), label = 'Revenue'),
+        list(method = 'update', args = list(list(visible = c(FALSE, FALSE, FALSE, FALSE, TRUE, FALSE)), list(title = 'Pitcher\'s Park Factor')), label = 'PPF'),
+        list(method = 'update', args = list(list(visible = c(FALSE, FALSE, FALSE, FALSE, FALSE, TRUE)), list(title = 'Batter\'s Park Factor')), label = 'BPF')
+      )
+    )
+  )
+)
+
+# Show the plot
+final_plot
+
+```
+

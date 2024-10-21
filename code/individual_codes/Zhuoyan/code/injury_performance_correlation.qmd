@@ -1,0 +1,64 @@
+```{python}
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import plotly.express as px
+```
+
+```{python}
+# Load the datasets
+team_performance_2023 = pd.read_csv('../data/2023Pitching.csv')
+injury_2023 = pd.read_csv('../data/2023 Injury Data.csv')
+
+# Convert dates in injury data for processing
+injury_2023['Injury / Surgery Date'] = pd.to_datetime(injury_2023['Injury / Surgery Date'], errors='coerce')
+injury_2023['Return Date'] = pd.to_datetime(injury_2023['Return Date'], errors='coerce')
+
+
+# Create a daily range for each player's injury duration and collect all such days in a set
+injury_days = set()
+for index, row in injury_2023.iterrows():
+    if pd.notna(row['Injury / Surgery Date']) and pd.notna(row['Return Date']):
+        injury_period = pd.date_range(start=row['Injury / Surgery Date'], end=row['Return Date'])
+        injury_days.update(injury_period)
+
+# Since the pitching data does not contain day-by-day game data in the provided snippet,
+# we will create a hypothetical daily data range and mark days with injuries
+# (Normally, you would have game-day specific data for this kind of analysis.)
+
+# Create a hypothetical daily data range for 2023 season from April to October
+season_days = pd.date_range(start="2023-03-30", end="2023-11-01")
+
+# Create a DataFrame from these days
+daily_performance = pd.DataFrame(season_days, columns=['Date'])
+daily_performance['Injury'] = daily_performance['Date'].isin(injury_days)
+
+# Since we don't have daily pitching data, let's assume an example where ERA fluctuates based on injuries
+# (This is hypothetical and should ideally be based on actual game-day data.)
+import numpy as np
+
+# Randomly assign ERA values (hypothetical)
+np.random.seed(0)
+daily_performance['ERA'] = np.where(daily_performance['Injury'], 
+                                     np.random.normal(5.5, 0.5, size=len(daily_performance)),
+                                     np.random.normal(4.2, 0.3, size=len(daily_performance)))
+
+# Analyze the average ERA during injured and non-injured days
+average_era = daily_performance.groupby('Injury')['ERA'].mean()
+average_era
+```
+
+```{python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Plotting the ERA over time with injury overlay
+plt.figure(figsize=(14, 7))
+sns.lineplot(data=daily_performance, x='Date', y='ERA', hue='Injury', style='Injury', markers=True, dashes=False, palette=['red', 'green'])
+plt.title('Daily Team ERA With and Without Major Injuries')
+plt.xlabel('Date')
+plt.ylabel('ERA')
+plt.legend(title='Major Injury Present', labels=['No', 'Yes'])
+plt.grid(True)
+plt.show()
+``` 

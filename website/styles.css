@@ -1,0 +1,7 @@
+/* css styles */
+figcaption {
+  font-family: Arial, sans-serif; /* Specify the font family */
+  color: #555; /* Dark grey color for the caption */
+  font-size: 14px; /* Smaller font size */
+  text-align: center; /* Center the text */
+}

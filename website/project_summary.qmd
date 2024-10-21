@@ -1,0 +1,152 @@
+---
+title: "Bring the Washington Nationals Back to MLB Championship Contention"
+format:
+  html:
+    embed-resources: true
+    code-fold: true
+execute:
+    echo: true
+    warning: false
+    message: false
+    freeze: auto
+---
+
+## Nationals Team Level Statistics
+
+### 1. 2019 Season and 2023 Season Records
+
+First, let's get an overview of the season records for the Washington Nationals in 2019 and 2023. By comparing the 2019 and 2023 Washington Nationals season records side-by-side, it is evident that the 2023 season generally performed much worse than 2019. It featured more blowout losses and fewer wins with margins greater than 5. There was no specific seasonal pattern for 2023. For example, some teams might start to have a poor record after a mid-season trade or a significant injury, but none of these factors were apparent for the 2023 season. In contrast, during the 2019 season, the team improved and developed better chemistry after about one-third of the season, around 50 games. Overall, the 2023 team performed significantly worse than the 2019 team throughout the season.
+
+```{r,fig.cap="[Figure 1: Margin Graph for Washington Nationals Records in 2019. The chart displays the game results, game margins, and opposing teams for each game of the 2019 season. The x-axis represents the games played, and the y-axis shows the results. Data was obtained from https://www.baseball-reference.com/teams/WSN/2019-schedule-scores.shtml.]{style='color:grey;'}"}
+#| echo: true
+#| eval: true 
+#| file: ../code/Team_Records_2019_Chart.R
+```
+
+```{r,fig.cap="[Figure 2: Margin Graph for Washington Nationals Records in 2023. The chart displays the game results, game margins, and opposing teams for each game of the 2023 season. The x-axis represents the games played, and the y-axis shows the results. Data was obtained from https://www.baseball-reference.com/teams/WSN/2023-schedule-scores.shtml.]{style='color:grey;'}"}
+#| echo: true
+#| eval: true 
+#| file: ../code/Team_Records_2023_Chart.R
+```
+
+Performance can result from multiple aspects. One aspect could be the opposing teams getting much stronger. In MLB, each team does not play an equal number of games against all other 29 teams. The Washington Nationals play more games against teams in their division. Therefore, if a team within the same division improved significantly since 2019, it would have a direct and significant impact on the Nationals' record.
+
+
+### 2. Opponent Teams Records
+
+```{r,fig.cap="[Figure 3: Scatter Bubble Chart for Opponent Team Average Margins and Wins in 2019 and 2023. The x-axis represents the number of games won, and the y-axis represents the average margin per game. The size of each bubble indicates the number of games played against the Washington Nationals, and the color categorizes the games into different clusters. Data was obtained from https://www.baseball-reference.com/leagues/majors/2023-standings.shtml, https://www.baseball-reference.com/leagues/majors/2019-standings.shtml, https://www.baseball-reference.com/teams/WSN/2023-schedule-scores.shtml, and https://www.baseball-reference.com/teams/WSN/2019-schedule-scores.shtml.]{style='color:grey;'}"}
+#| echo: true
+#| eval: true 
+#| file: ../code/Opp_Team_Bubble_Chart.R
+```
+
+By toggling between 2019 and 2023, the games played against different teams changed slightly, but the Washington Nationals still played the most games against the following four teams: Miami Marlins, Philadelphia Phillies, Atlanta Braves, and New York Mets. Comparing the records for those four teams, the games they won in 2019 and 2023 remained quite consistent, but the winning margins were much smaller in 2023. This indicates a slightly worse performance for the four teams the Nationals played the most. It indirectly suggests that the Nationals' poorer record in 2023 is not directly due to their opponents' strength, but more likely due to their own diminished capabilities. Now, let's dig into more statistics from the team's operational management level.
+
+### 3. Payroll by Positions for the 2019 and 2023 Seasons
+
+```{r,fig.cap="[Figure 4: Pie Chart for Washington Nationals Payroll by Positions in 2019 and 2023. The two charts show the total payroll by the top 5 positions. The top 4 positions were kept, while the remaining are grouped into the 'Others' category. The size of the pie chart is proportional to the payroll size in 2019 and 2023, respectively. The 2019 data is obtained from https://legacy.baseballprospectus.com/compensation/?team=WAS, and the 2023 data is obtained from https://www.spotrac.com/mlb/washington-nationals/payroll/2023/.]{style='color:grey;'}"}
+#| echo: true
+#| eval: true 
+#| file: ../code/Salary_Pie_Chart.R
+```
+
+```{r,fig.cap="[Figure 5: Bar Chart for Washington Nationals Payroll Changes by Positions between 2019 and 2023. This bar chart complements the pie chart by displaying three statistics. The first is the dollar value change for each position from 2019 to 2023. The second shows the proportion of that position's salary change. The third statistic represents the dollar value change divided by the total 2019 salary for that position to provide a more detailed percentage shift. The 2019 data is obtained from https://legacy.baseballprospectus.com/compensation/?team=WAS, and the 2023 data is obtained from https://www.spotrac.com/mlb/washington-nationals/payroll/2023/.]{style='color:grey;'}"}
+#| echo: true
+#| eval: true 
+#| file: ../code/Salary_Bar_Chart.R
+```
+
+The pie chart displays the total payroll by positions for the years 2019 and 2023. Accompanying this, a bar chart serves as a supplement, showing the dollar or percentage change from 2019 to 2023. There are two significant findings related to the payroll statistics. In 2019, the Washington Nationals spent almost twice the amount of money that they did in 2023. All positions show a decrease in dollar values according to the bar chart. This raises significant questions: What caused the large decrease in total payroll from 2019 to 2023? What occurred at the team operational level? On the other hand, proportionally, the Nationals allocated much more money to pitchers in 2023, attempting to invest the same amount of money to sign star pitchers. According to the proportion shift graph, the baseman positions experienced the largest decrease in dollar value change divided by the 2019 payroll, indicating that in 2023, these positions were not prioritized in the team-building process. This is a significant issue since, ideally, teams need to distribute their spending evenly across different positions to achieve a more balanced team. Although an outstanding pitcher is key to a competitive team, fans might also want to see star batters who can produce more home runs. In general, people prefer offense over defense.
+
+### 4. Team Operation Statistics
+
+```{r,fig.cap="[Figure 6: Line Chart for Washington Nationals Stadium, Revenue, and Payroll related statistics from 2008 to 2023. The chart contains six aspects: 'Attendance', 'Estimated Payroll', 'Average Ticket Price', 'Revenue (millions)', 'Pitcher's Park Factor', and 'Batter's Park Factor'. Different aspects can be selected individually. Year 2020 is omitted due to the Covid impact of a short season. For Pitcher's Park Factor (PPF), a number greater than 100 suggests that the park is harder on pitchers, more hitter-friendly. And for Batter's Park Factor (BPF), a number greater than 100 suggests that the park is favorable for hitters, boosting offensive statistics. The ticket price data is obtained from https://www.statista.com/statistics/203506/washington-nationals-average-ticket-price/. The revenue data is obtained from https://www.statista.com/statistics/196692/revenue-of-the-washington-nationals-since-2006/. The other data is obtained from the source https://www.baseball-reference.com/teams/WSN/attend.shtml.]{style='color:grey;'}"}
+#| echo: true
+#| eval: true 
+#| file: ../code/Stadium_Stats.R
+```
+
+The last chart from the team operational perspective, representing trends from 2008 to 2023 at a team operational level, is a line chart that illustrates different aspects. Attendance and payroll both dropped significantly since 2019. However, interestingly, revenue has remained steady. This suggests that the Nationals' management team has intentionally reduced spending on the team. While this could be part of a strategic plan, it may harm fan loyalty. The decrease in attendance has impacted the two park factors, which both dropped below 100. The Nationals need to initiate some marketing campaigns to attract more fan attendance, which could have a long-term impact on the team’s performance. In the next section, more statistics related to team offense and defense will be reviewed to see if any detailed strategies related to team building could be proposed.
+
+## Pitching Analysis: Team and Individual Levels
+
+```{r, fig.cap="[Figure 7: The radar chart provides a comparative analysis of the Washington Nationals' pitching performance across the 2019 and 2023 seasons, with the 2019 data represented by a pink area and the 2023 data by a purple area. This visualization indicates that the team's pitching was more effective in 2019 across all six key metrics. After normalization, the Fielding Independent Pitching metric, which estimates a pitcher's effectiveness at preventing home runs, walks, and other negative outcomes, shows a significant gap favoring 2019. Additionally, the WHIP metric suggests better control and efficiency for 2019, making it harder for opposing teams to score. A wider spread in the pink area along the SO9 axis also indicates a higher strikeout rate per nine innings, marking another aspect of pitching dominance in 2019. Higher values on the radar chart represent superior statistical performance. Data sources: https://www.baseball-reference.com/teams/WSN/2023.shtml#all_team_pitching and https://www.baseball-reference.com/teams/WSN/2019.shtml#all_team_pitching.]{style='color:grey;'}"}
+#| echo: true
+#| eval: true 
+#| file: ../code/Pitching_Radar_Chart.R
+```
+
+- SO9: Strikeouts Per 9 Innings
+- WHIP: Walks and Hits Per Inning Pitched
+- ERA: Earned Run Average
+- R: Runs Allowed
+- H: Hits Allowed
+- FIP: Fielding Independent Pitching
+
+After analyzing the six key pitching metrics for the Washington Nationals, a downward trend in performance is evident. Other than the "Hits Allowed" metric, which has not changed significantly, the other metrics clearly decreased in 2019. Notably, the data suggests a decline in individual pitchers' skills, which warrants a detailed examination in the individual players' section to identify specific areas of concern and potential improvements. This in-depth analysis is crucial for understanding the underlying issues contributing to the overall dip in pitching effectiveness.
+
+```{r, fig.cap="[Figure 8: Radar chart for top 5 appearence pitchers from the 2019 Nats and 2023 Nats. The radar plot contains 5 major individual aspect of pitchers: 'Earned Run Average', 'Walk+Hit per inning','Hit per 9 inning','StrikeOut per 9 inning','Walk per 9 inning'. The pitcher statistics data is obtained from https://www.baseball-reference.com/leagues/majors/2023-standard-pitching.shtml]{style='color:grey;'}"}
+#| echo: true
+#| eval: true 
+#| file: ../code/player_pitching.R
+```
+
+This comparison highlights an intriguing contrast in pitcher performance between 2023 and 2019.3 out of top 5 pitchers from 2023 has significant weaker performance comparing to pitchers in 2019. Despite improvements in certain metrics for the rest of 2 2023 pitchers, numbers of hits remain relatively consistent. This suggests that the overall pitchers lineup in 2023 are weaker than lineup in 2019.
+
+## Batting Analysis: Team and Individual Levels
+
+```{r, fig.cap="[Figure 9: The radar chart offers a side-by-side comparison of the Washington Nationals' offensive performance using batting statistics from the 2019 and 2023 seasons. The 2019 batting achievements are represented by the pink region, while the purple region depicts the 2023 outcomes. After normalizing the data, it is evident that the team’s batting metrics in 2019 surpassed those in 2023 across all six key metrics. Specifically, the 2019 season shows higher values in SLG, OBP, BA, and OPS, suggesting a more potent offensive lineup capable of more effective hitting and run production. Additionally, the HR metric, which indicates power-hitting prowess, was also greater in 2019. The OPS+ values, which adjust for league and park variations, are relatively similar for both years, suggesting that when accounting for external factors, the team’s offensive efficiency has not significantly deviated from league norms. Data sources: https://www.baseball-reference.com/teams/WSN/2023.shtml#all_team_batting and https://www.baseball-reference.com/teams/WSN/2019.shtml#all_team_batting.]{style='color:grey;'}"}
+#| echo: true
+#| eval: true 
+#| file: ../code/Batting_Radar_Chart.R
+```
+
+- SLG: Slugging Percentage
+- OBP: On-Base Percentage
+- BA: Batting Average
+- HR: Home Runs
+- OPS: On-base Plus Slugging
+- OPS+: Adjusted On-base Plus Slugging (normalized across the league, with 100 being the average)
+
+The Nat's batting performance has shown a marked decline in 2023, as evidenced by the significant gaps in all six metrics compared between 2019 and 2023. This downturn suggests a need for a thorough examination of individual batters' abilities to pinpoint the factors contributing to the stark decrease in batting effectiveness. Understanding the underlying issues, such as changes in player composition, injuries, or shifts in batting strategy, is crucial. This analysis will help identify specific areas for improvement and develop strategies to enhance overall performance, ensuring the team's offensive capabilities are optimized in future seasons.
+
+```{r, fig.cap="[Figure 10: Radar chart for top 5 batting players from the 2019 Nats and 2023 Nats. The radar plot contains 5 major individual aspect of batters: 'Batting Average', 'On-base percentage','On-base Plus Slugging Plus','Slugging','Hits'. The Batter statistics data is obtained from https://www.baseball-reference.com/leagues/majors/2019-standard-batting.shtml.]{style='color:grey;'}"}
+#| echo: true
+#| eval: true 
+#| file: ../code/player_batting.R
+```
+
+
+This comparison highlights an intriguing contrast in batters performance between 2023 and 2019. 4 out of top 5 batter from 2023 has slightly weaker performance comparing to batters in 2019. However, when we compare the individual statistics with the team statistics, we can see the gap on performance are larger for team statistics, indicates more batting improvement needed for rotation players.
+
+## Injury Analysis: 2023 Team Level
+
+```{r}
+reticulate::use_condaenv("dsan5400", required = TRUE)
+
+```
+
+```{python, fig.cap="[Figure 11: Injury Timeline of the 2023 Washington Nationals: This bar graph presents an overview of the injuries sustained by the team across different positions during the 2023 season. Each bar represents the time frame a player was sidelined due to injury, offering insights into how the absence of key players, especially starting pitchers like Stephen Strasburg and relief pitchers like Tanner Rainey, has correlated with the team's struggles. The visual highlights the critical periods where multiple injuries overlapped, further exacerbating the team's challenges. This 2023 injury data is obtained from the source https://www.fangraphs.com/roster-resource/injury-report/nationals?timeframe=all&season=2023.]{style='color:grey;'}"}
+#| echo: false
+#| eval: true
+#| file: ../code/2023_injury.py
+```
+
+Injury is also a critical aspect to consider when evaluating a team's performance, as it significantly influences team dynamics and strategy. An analysis was conducted on the impact of injuries on team performance through the development of a bar graph that details the injury timelines of each player. This graph tracks the start and expected recovery periods of injuries, providing clear insights into the availability of key players.
+
+To specifically understand the impact of injuries on the Washington Nationals, an interactive bar graph was developed. This graph allows for the tracking of the start and expected recovery periods of injuries, offering clear insights into the availability of key players. A notable example from the analysis is Stephen Strasburg, the 2019 MVP. The chart reveals that Strasburg sustained an injury in 2021 and was not expected to return until the end of May 2023. Furthermore, he did not participate in any games in 2023. His absence was likely a significant factor in the team's downturn that year, particularly given his outstanding performance in 2019. Additionally, the analysis examined periods where multiple injuries overlapped, which further exacerbated the team’s challenges. This analysis underscores a broader trend: the health of the players directly correlates with the ability to replicate the success of a championship season.
+
+## Proposed Strategies
+
+### Operation & Management
+1. **Invest More in the Fans**. Provide more souvenirs or free team merchandise during the games to boost attendance. Create a better soundtrack during the game to increase fan engagement. This could help create a more harsh environment for the away team, enhancing the Pitcher's Park Factor and Batter's Park Factor.
+
+2. **Sign Star Batters**. A good pitcher guarantees a strong defensive team performance, but fans generally prefer better offense. They want to see home runs. It's necessary to maintain a balance between pitchers and batters on the payroll to attract more audience.
+
+### Team & Players Improvement
+1. **Pitching Control**. Choose pitchers with better pitching control to reduce the Walks + Hits per inning (WHIP) and select pitchers with higher Fielding Independent Pitching (FIP) statistics.
+
+2. **Improve Batting**. All six aspects require improvements to return to championship levels. Investing more money in signing talented batters is essential. This strategy will enhance the team's offensive capabilities and contribute significantly to overall success.
+
+### Others
+1. **Injuries**. Adjust the game plan to help players stay healthy. Consistent game attendance is key to leading a successful season. By ensuring players are in peak physical condition, the team can maintain a high level of performance throughout the season, ultimately increasing their chances of success.

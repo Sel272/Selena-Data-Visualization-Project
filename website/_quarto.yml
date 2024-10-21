@@ -1,0 +1,26 @@
+project:
+  type: website
+
+website:
+  title: "Washington Nationals Data Visualization Project"
+  sidebar:
+      background: light
+      logo: "../img/Nats_Logo.jpeg"
+      logo-alt: "Project logo."
+      style: "docked"
+      search: true
+      contents:
+        - text: "Research Background"
+          href: "index.qmd"
+        - text: "Project Summary"
+          href: "project_summary.qmd"
+        - text: "Data and Code"
+          href: "https://github.com/Sel272/Selena-Data-Visualization-Project"
+
+format:
+  html:
+    toc: true
+
+
+
+
