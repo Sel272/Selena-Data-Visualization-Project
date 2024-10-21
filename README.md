@@ -2,7 +2,7 @@
 # Bring the Washington Nationals Back to MLB Championship Contention
 
 ## Team Members
-Group Memeber: Xuening Yang, Zhuoyan Guo, Marcus Li, Congfei Yin
+Group Member: Xuening Yang, Zhuoyan Guo, Marcus Li, Congfei Yin
 
 ## Summary:
 The Washington Nationals, a professional baseball team part of Major League Baseball (MLB), are based in Washington, D.C., and play their home games at Nationals Park. In 2019, they achieved a remarkable playoff run, ultimately winning their first MLB championship in the franchise's history. However, subsequent years impacted by COVID and various rebuilding phases have seen the team's performance decline, positioning them among the lower ranks in their conference within five years.
